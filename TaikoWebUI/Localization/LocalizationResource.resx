@@ -837,4 +837,7 @@
   <data name="Gaiden Title" xml:space="preserve">
     <value />
   </data>
+  <data name="Search by Gaiden Title" xml:space="preserve">
+    <value />
+  </data>
 </root>

@@ -837,4 +837,7 @@
   <data name="Gaiden Title" xml:space="preserve">
     <value>外伝タイトル</value>
   </data>
+  <data name="Search by Gaiden Title" xml:space="preserve">
+    <value>外伝タイトルで検索</value>
+  </data>
 </root>

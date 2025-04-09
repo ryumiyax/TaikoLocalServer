@@ -1701,6 +1701,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Search_by_Gaiden_Title {
+            get {
+                return ResourceManager.GetString("Search by Gaiden Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Search_by_Name__ID__or_Access_Code {
             get {
                 return ResourceManager.GetString("Search by Name, ID, or Access Code", resourceCulture);

@@ -837,4 +837,7 @@
   <data name="Gaiden Title" xml:space="preserve">
     <value>外傳標題</value>
   </data>
+  <data name="Search by Gaiden Title" xml:space="preserve">
+    <value>外傳標題搜索</value>
+  </data>
 </root>
