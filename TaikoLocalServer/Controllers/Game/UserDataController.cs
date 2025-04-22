@@ -14,6 +14,8 @@ public class UserDataController : BaseController<UserDataController>
         var commonResponse = await Mediator.Send(new UserDataQuery(request.Baid));
         var response = UserDataMappers.MapTo3906(commonResponse);
 
+        Logger.LogInformation("User Has challengeCompe: {hasChallengeCompe}", commonResponse.IsChallengecompe);
+
         return Ok(response);
     }
     

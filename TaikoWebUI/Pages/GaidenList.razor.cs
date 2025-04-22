@@ -1,4 +1,5 @@
-﻿using TaikoWebUI.Pages.Dialogs;
+﻿using TaikoLocalServer.Models.Application;
+using TaikoWebUI.Pages.Dialogs;
 
 namespace TaikoWebUI.Pages;
 
@@ -151,5 +152,23 @@ public partial class GaidenList
 
         var options = new DialogOptions { DisableBackdropClick = true };
         await DialogService.ShowAsync<SerialQrCodeDialog>(title, parameters, options);
+    }
+
+    private async Task ResetScores(uint danId)
+    {
+        bool? result = await DialogService.ShowMessageBox(
+                    Localizer["Warning"],
+                    (MarkupString)
+                    (string)Localizer["Reset All scores of this Gaiden?"],
+                    Localizer["Dialog OK"], Localizer["Dialog NO"]
+        );
+        if (result == true)
+        {
+            var resp = await Client.GetFromJsonAsync<CommonActionResultResponse>($"api/DanBestData/reset/gaiden/{danId}");
+            if (resp?.Result == 1)
+            {
+                Snackbar.Add(Localizer["Success"], Severity.Success);
+            }
+        }
     }
 }

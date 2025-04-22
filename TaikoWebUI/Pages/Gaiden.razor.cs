@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using System.Collections.Immutable;
+using TaikoWebUI.Pages.Dialogs;
 using TaikoWebUI.Settings;
 
 namespace TaikoWebUI.Pages;
@@ -282,5 +283,18 @@ public partial class Gaiden
     private static long GetTotalHits(uint danId)
     {
         return _bestDataMap.TryGetValue(danId, out DanBestData? value) ? value.DanBestStageDataList.Sum(stageData => stageData.TotalHitCount) : 0;
+    }
+    private async Task ShowQrCode(uint danId, string title)
+    {
+        var gaidenSerialDict = await GameDataService.GetGaidenSerialDictionary();
+        title = GetDanTitle(title, SongNameLanguage);
+
+        var parameters = new DialogParameters
+        {
+            ["serial"] = gaidenSerialDict[danId]
+        };
+
+        var options = new DialogOptions { DisableBackdropClick = true };
+        await DialogService.ShowAsync<SerialQrCodeDialog>(title, parameters, options);
     }
 }

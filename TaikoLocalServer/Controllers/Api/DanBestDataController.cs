@@ -32,7 +32,6 @@ public class DanBestDataController(IDanScoreDatumService danScoreDatumService, I
             }
         }
         
-        // FIXME: Handle gaiden in here and web ui
         var danScores = await danScoreDatumService.GetDanScoreDataList(baid, DanType.Normal);
         var danDataList = new List<DanBestData>();
 
@@ -67,7 +66,6 @@ public class DanBestDataController(IDanScoreDatumService danScoreDatumService, I
             }
         }
 
-        // FIXME: Handle gaiden in here and web ui
         var danScores = await danScoreDatumService.GetDanScoreDataList(baid, DanType.Gaiden);
         var danDataList = new List<DanBestData>();
 
@@ -81,6 +79,56 @@ public class DanBestDataController(IDanScoreDatumService danScoreDatumService, I
         return Ok(new DanBestDataResponse
         {
             DanBestDataList = danDataList
+        });
+    }
+
+    [HttpGet("reset/gaiden/{danId}")]
+    [ServiceFilter(typeof(AuthorizeIfRequiredAttribute))]
+    public async Task<IActionResult> ResetGaidenScores(uint danId)
+    {
+        if (authSettings.AuthenticationRequired)
+        {
+            var tokenInfo = authService.ExtractTokenInfo(HttpContext);
+            if (tokenInfo == null)
+            {
+                return Unauthorized();
+            }
+
+            if (!tokenInfo.Value.isAdmin)
+            {
+                return Forbid();
+            }
+        }
+
+        await danScoreDatumService.ClearDanScores(danId, DanType.Gaiden);
+        return Ok(new CommonActionResultResponse
+        {
+            Result = 0
+        });
+    }
+
+    [HttpGet("reset/dani/{danId}")]
+    [ServiceFilter(typeof(AuthorizeIfRequiredAttribute))]
+    public async Task<IActionResult> ResetDaniScores(uint danId)
+    {
+        if (authSettings.AuthenticationRequired)
+        {
+            var tokenInfo = authService.ExtractTokenInfo(HttpContext);
+            if (tokenInfo == null)
+            {
+                return Unauthorized();
+            }
+
+            if (!tokenInfo.Value.isAdmin)
+            {
+                return Forbid();
+            }
+        }
+
+        await danScoreDatumService.ClearDanScores(danId, DanType.Normal);
+        return Ok(new CommonActionResultResponse
+        {
+            Result = 0
         });
     }
 }

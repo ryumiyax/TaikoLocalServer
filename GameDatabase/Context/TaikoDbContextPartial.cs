@@ -72,5 +72,43 @@ public partial class TaikoDbContext
                 .HasForeignKey(d => d.Baid)
                 .OnDelete(DeleteBehavior.Cascade);
         });
+
+        modelBuilder.Entity<DanSlot>(entity =>
+        {
+            entity.HasKey(e => e.DanId);
+
+            entity.HasOne(d => d.DanInfo)
+                .WithMany()
+                .HasPrincipalKey(p => p.DanId)
+                .HasForeignKey(d => d.BindDanId)
+                .OnDelete(DeleteBehavior.SetNull);
+        });
+
+        modelBuilder.Entity<DanInfo>(entity =>
+        {
+            entity.HasKey(e => e.DanId);
+        });
+
+        modelBuilder.Entity<DanSong>(entity =>
+        {
+            entity.HasKey(e => new { e.DanId, e.SongIdx });
+
+            entity.HasOne(d => d.DanInfo)
+                .WithMany(p => p.AryOdaiSong)
+                .HasPrincipalKey(p => p.DanId)
+                .HasForeignKey(d => d.DanId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<DanBorder>(entity =>
+        {
+            entity.HasKey(e => new { e.DanId, e.BorderIdx });
+
+            entity.HasOne(d => d.DanInfo)
+                .WithMany(p => p.AryOdaiBorder)
+                .HasPrincipalKey(p => p.DanId)
+                .HasForeignKey(d => d.DanId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
     }
 }

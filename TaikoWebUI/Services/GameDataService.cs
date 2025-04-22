@@ -1,4 +1,6 @@
-﻿using System.Collections.Immutable;
+﻿using Microsoft.Extensions.Options;
+using System.Collections.Immutable;
+using TaikoWebUI.Settings;
 
 namespace TaikoWebUI.Services;
 
@@ -10,19 +12,22 @@ public class GameDataService : IGameDataService
     private Dictionary<uint, MusicDetail>? musicDetailDictionary = new();
     private List<Costume>? costumeList;
     private Dictionary<uint,Title>? titleDictionary = new();
-    private Dictionary<uint, string> gaidenSerialDictionary = new();
+    private Dictionary<uint, string>? gaidenSerialDictionary = new();
     
     private bool musicDetailInitialized;
     private bool costumesInitialized;
     private bool titlesInitialized;
     private bool gaidenSerialsInitialized;
+
+    private bool enableChallengeCompe;
     
     private Dictionary<string, List<uint>>? lockedCostumeDataDictionary = new();
     private Dictionary<string, List<uint>>? lockedTitleDataDictionary = new();
 
-    public GameDataService(HttpClient client)
+    public GameDataService(HttpClient client, IOptions<WebUiSettings> settings)
     {
         this.client = client;
+        enableChallengeCompe = settings.Value.EnableChallengeCompe;
     }
 
     public async Task InitializeAsync(string dataBaseUrl)
@@ -253,5 +258,10 @@ public class GameDataService : IGameDataService
     {
         gaidenSerialDictionary = await client.GetFromJsonAsync<Dictionary<uint, string>>("api/GameData/GaidenSerials");
         gaidenSerialsInitialized = true;
+    }
+
+    public bool GetEnableChallengeCompe()
+    {
+        return enableChallengeCompe;
     }
 }

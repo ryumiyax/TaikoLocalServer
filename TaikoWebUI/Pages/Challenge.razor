@@ -1,0 +1,34 @@
+﻿@using TaikoWebUI.Components;
+
+@inject HttpClient Client
+@inject AuthService AuthService
+@inject BreadcrumbsStateContainer BreadcrumbsStateContainer
+
+@page "/ChallengeCompe/{baid:int}/Challenge"
+
+<ChallengeCompeteGrid Baid="Baid" Mode="1"></ChallengeCompeteGrid>
+
+@code {
+    [Parameter]
+    public int Baid { get; set; }
+
+    private UserSetting? userSetting;
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        if (AuthService.LoginRequired && !AuthService.IsLoggedIn)
+        {
+            await AuthService.LoginWithAuthToken();
+        }
+
+        userSetting = await Client.GetFromJsonAsync<UserSetting>($"api/UserSettings/{Baid}");
+
+        BreadcrumbsStateContainer.breadcrumbs.Clear();
+        if (AuthService.IsLoggedIn && !AuthService.IsAdmin) BreadcrumbsStateContainer.breadcrumbs.Add(new BreadcrumbItem(Localizer["Dashboard"], href: "/"));
+        else BreadcrumbsStateContainer.breadcrumbs.Add(new BreadcrumbItem(Localizer["Users"], href: "/Users"));
+        BreadcrumbsStateContainer.breadcrumbs.Add(new BreadcrumbItem($"{userSetting?.MyDonName}", href: null, disabled: true));
+        BreadcrumbsStateContainer.breadcrumbs.Add(new BreadcrumbItem(Localizer["Challenge"], href: $"/ChallengeCompe/{Baid}/Challenge", disabled: false));
+        BreadcrumbsStateContainer.NotifyStateChanged();
+    }
+}

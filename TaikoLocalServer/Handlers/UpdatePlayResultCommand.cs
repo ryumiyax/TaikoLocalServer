@@ -1,11 +1,12 @@
 ﻿using GameDatabase.Context;
+using TaikoLocalServer.Services;
 using Throw;
 
 namespace TaikoLocalServer.Handlers;
 
 public record UpdatePlayResultCommand(uint Baid, CommonPlayResultData PlayResultData) : IRequest<uint>;
 
-public class UpdatePlayResultCommandHandler(TaikoDbContext context, ILogger<UpdatePlayResultCommandHandler> logger)
+public class UpdatePlayResultCommandHandler(TaikoDbContext context, IChallengeCompeteService challengeCompeteService, ILogger<UpdatePlayResultCommandHandler> logger)
     : IRequestHandler<UpdatePlayResultCommand, uint>
 {
     public async Task<uint> Handle(UpdatePlayResultCommand request, CancellationToken cancellationToken)
@@ -59,7 +60,9 @@ public class UpdatePlayResultCommandHandler(TaikoDbContext context, ILogger<Upda
             await context.SaveChangesAsync(cancellationToken);
             return 1;
         }
-        
+
+        List<uint> createdBestIds = new List<uint>();
+        List<uint> newBaids = new List<uint>();
         for (var songNumber = 0; songNumber < playResultData.AryStageInfoes.Count; songNumber++)
         {
             var stageData = playResultData.AryStageInfoes[songNumber];
@@ -116,6 +119,10 @@ public class UpdatePlayResultCommandHandler(TaikoDbContext context, ILogger<Upda
                 Difficulty = (Difficulty)stageData.Level
             };
             context.SongPlayData.Add(songPlayDatum);
+
+            byte[] option = stageData.OptionFlg;
+            short optionVal = (short)(option[0] + (option[1]) << 8);
+            await challengeCompeteService.UpdateBestScore(songPlayDatum.Baid, songPlayDatum, optionVal, createdBestIds, newBaids);
         }
 
         await context.SaveChangesAsync(cancellationToken);

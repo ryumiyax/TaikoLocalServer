@@ -840,4 +840,172 @@
   <data name="Search by Gaiden Title" xml:space="preserve">
     <value>外伝タイトルで検索</value>
   </data>
+  <data name="Accept" xml:space="preserve">
+    <value>受け入れる</value>
+  </data>
+  <data name="Accepted" xml:space="preserve">
+    <value>受け入れられました</value>
+  </data>
+  <data name="Challenge" xml:space="preserve">
+    <value>挑戦状</value>
+  </data>
+  <data name="Challenge Competition Data" xml:space="preserve">
+    <value>挑戦と大会</value>
+  </data>
+  <data name="Challenge Target" xml:space="preserve">
+    <value>挑戦対象</value>
+  </data>
+  <data name="Comp ID" xml:space="preserve">
+    <value>挑戦ID</value>
+  </data>
+  <data name="Competition" xml:space="preserve">
+    <value>大会</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>作成する</value>
+  </data>
+  <data name="Create Challenge" xml:space="preserve">
+    <value>挑戦状を作成する</value>
+  </data>
+  <data name="Create Competition" xml:space="preserve">
+    <value>大会を作成する</value>
+  </data>
+  <data name="Create Official Competition" xml:space="preserve">
+    <value>公式大会を作成する</value>
+  </data>
+  <data name="CreatorChallengeTitle" xml:space="preserve">
+    <value>{To} への挑戦状</value>
+  </data>
+  <data name="Describe" xml:space="preserve">
+    <value>コメント</value>
+  </data>
+  <data name="FullChallengeTitle" xml:space="preserve">
+    <value>{From} から {To} への挑戦状</value>
+  </data>
+  <data name="Last For (Days)" xml:space="preserve">
+    <value>期間 (日)</value>
+  </data>
+  <data name="Max Participant" xml:space="preserve">
+    <value>最大参加者数</value>
+  </data>
+  <data name="Official Competition" xml:space="preserve">
+    <value>公式大会</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>オフ</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>オン</value>
+  </data>
+  <data name="Only Play Once" xml:space="preserve">
+    <value>一度だけプレイ</value>
+  </data>
+  <data name="Participate" xml:space="preserve">
+    <value>参加する</value>
+  </data>
+  <data name="Participated" xml:space="preserve">
+    <value>参加済み</value>
+  </data>
+  <data name="ReceiverChallengeTitle" xml:space="preserve">
+    <value>{From} からの挑戦状</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>拒否する</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>拒否されました</value>
+  </data>
+  <data name="Search by Name, Comp ID" xml:space="preserve">
+    <value>名前、挑戦IDで検索</value>
+  </data>
+  <data name="Select Song" xml:space="preserve">
+    <value>難しいと曲を選ぶ</value>
+  </data>
+  <data name="Select User" xml:space="preserve">
+    <value>挑戦対象を選択</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>終了しました</value>
+  </data>
+  <data name="Fulfilled" xml:space="preserve">
+    <value>すでに満席</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>待っている</value>
+  </data>
+  <data name="Expired" xml:space="preserve">
+    <value>期限切れ</value>
+  </data>
+  <data name="Any" xml:space="preserve">
+    <value>指定しない</value>
+  </data>
+  <data name="Not Participated" xml:space="preserve">
+    <value>参加していません</value>
+  </data>
+  <data name="Already Operated" xml:space="preserve">
+    <value>すでに操作されています</value>
+  </data>
+  <data name="Compete is FullFilled" xml:space="preserve">
+    <value>大会はすでに満席</value>
+  </data>
+  <data name="Compete Expired" xml:space="preserve">
+    <value>大会は終了しました</value>
+  </data>
+  <data name="Compete Not Found" xml:space="preserve">
+    <value>大会していません</value>
+  </data>
+  <data name="Can't Accept Other's Challenge" xml:space="preserve">
+    <value>他の挑戦を受け入れることはできません</value>
+  </data>
+  <data name="Challenge Expired" xml:space="preserve">
+    <value>挑戦は期限切れになりました</value>
+  </data>
+  <data name="Challenge Not Found" xml:space="preserve">
+    <value>挑戦は見つかりません</value>
+  </data>
+  <data name="Only Admin Can Create Official Compete" xml:space="preserve">
+    <value>管理者のみが公式大会を作成できます</value>
+  </data>
+  <data name="Please Create More Compete After Finished Exists" xml:space="preserve">
+    <value>新しい大会を作成する前に、現在作成されている大会を完了してください</value>
+  </data>
+  <data name="Please Create More Challenge After Finished Exists" xml:space="preserve">
+    <value>新しい挑戦を作成する前に、現在作成されている挑戦を完了してください</value>
+  </data>
+  <data name="You already have processing Challenge with this User" xml:space="preserve">
+    <value>あなたはすでに選択したユーザーとの挑戦を進行しています</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>不可</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>概要</value>
+  </data>
+  <data name="PlayCount" xml:space="preserve">
+    <value>プレイ回数</value>
+  </data>
+  <data name="CompRank" xml:space="preserve">
+    <value>第{rank}位</value>
+  </data>
+  <data name="Win" xml:space="preserve">
+    <value>勝つ</value>
+  </data>
+  <data name="Lose" xml:space="preserve">
+    <value>負け</value>
+  </data>
+  <data name="No Score Commited" xml:space="preserve">
+    <value>プレイされていません</value>
+  </data>
+  <data name="In progress" xml:space="preserve">
+    <value>進行中</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>ステータス</value>
+  </data>
 </root>

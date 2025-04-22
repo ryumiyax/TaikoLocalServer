@@ -8,6 +8,7 @@
 @inject NavigationManager NavigationManager
 @inject BreadcrumbsStateContainer BreadcrumbsStateContainer
 @inject IDialogService DialogService
+@inject ISnackbar Snackbar
 
 @page "/Users/{baid:int}/Gaidens"
 
@@ -44,7 +45,7 @@
                         </MudGrid>
                     </ToolBarContent>
                     <HeaderContent>
-                        <MudTh Style="width: 400px">
+                        <MudTh Style="min-width: 250px">
                             <MudTableSortLabel T="DanData" SortBy="context => GetGaidenTitle(context.Title, SongNameLanguage)">
                                 @Localizer["Gaiden Title"]
                             </MudTableSortLabel>
@@ -53,22 +54,30 @@
                         {
                             int currentStage = i;
                             <MudTh>
-                                <MudText T="DanData">
+                                <MudText T="DanData" Style="font-size: 14px;">
                                     @Localizer["Stage"]@currentStage
+                                </MudText>
+                            </MudTh>
+                        }
+                        @if (!AuthService.LoginRequired || (AuthService.LoginRequired && AuthService.IsAdmin))
+                        {
+                            <MudTh>
+                                <MudText T="DanData" Style="font-size: 14px;">
+                                    @Localizer["Operate"]
                                 </MudText>
                             </MudTh>
                         }
                     </HeaderContent>
                     <RowTemplate>
                         <MudTd Style="text-align: initial !important;">
-                            <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center">
+                            <MudStack Row="true" Justify="Justify.FlexStart" AlignItems="AlignItems.Center">
                                 <div style="margin: 4px;">
                                     <MudIconButton Variant="Variant.Filled" OnClick="@(async () => await ShowQrCode(context.DanId, context.Title))"
                                         Icon="@Icons.Material.Filled.QrCode2" Color="@Color.Primary"
                                         Size="Size.Small" Title="Gaiden QRCode"
                                     />
                                 </div>
-                                <div style="width:400px">
+                                <div style="min-width:250px">
                                     <a href="@($"/Users/{Baid}/Gaiden/{context.DanId}")">
                                         <MudText Typo="Typo.body2" Style="font-weight:bold">@GetGaidenTitle(context.Title, SongNameLanguage)</MudText>
                                         @if (SongNameLanguage != null && SongNameLanguage != "ja")
@@ -86,13 +95,13 @@
                                     @if (song.IsHiddenSongName)
                                     {
                                         <MudText Typo="Typo.body2" Style="font-weight:bold">[@GetDifficultyText(song.Level)]</MudText>
-                                        <MudText Typo="Typo.body2">???</MudText>
+                                        <MudText Typo="Typo.body2" Style="padding-left: 4px; padding-right: 2px;">???</MudText>
                                     }
                                     else
                                     {
                                         <a href="@($"/Users/{Baid}/Songs/{song.SongNo}")" style="display: inline-flex !important;">
                                             <MudText Typo="Typo.body2" Style="font-weight:bold">[@GetDifficultyText(song.Level)]</MudText>
-                                            <MudText Typo="Typo.body2">
+                                            <MudText Typo="Typo.body2" Style="padding-left: 4px; padding-right: 2px;">
                                                 @GameDataService.GetMusicNameBySongId(musicDetailDictionary, song.SongNo, SongNameLanguage)
                                             </MudText>
                                         </a>
@@ -100,6 +109,14 @@
                                     <MudIcon Icon="@Icons.Material.Filled.Star" Size="Size.Small" />
                                     <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">@GameDataService.GetMusicStarLevel(musicDetailDictionary, song.SongNo, (Difficulty)song.Level)</MudText>
                                 </MudStack>
+                            </MudTd>
+                        }
+                        @if (!AuthService.LoginRequired || (AuthService.LoginRequired && AuthService.IsAdmin))
+                        {
+                            <MudTd>
+                                <MudButtonGroup Color="Color.Primary" Variant="Variant.Filled">
+                                    <MudButton OnClick="@(async () => await ResetScores(context.DanId))">@Localizer["Reset"]</MudButton>
+                                </MudButtonGroup>
                             </MudTd>
                         }
                     </RowTemplate>

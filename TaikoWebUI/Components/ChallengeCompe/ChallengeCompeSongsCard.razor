@@ -1,0 +1,125 @@
+﻿@using Blazored.LocalStorage
+@using TaikoWebUI.Utilities
+
+@inject AuthService AuthService
+@inject IGameDataService GameDataService
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+
+<MudCard Outlined="true" Elevation="0">
+    <MudCardHeader>
+        <MudGrid Spacing="2">
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6">@Localizer["Course Songs"]</MudText>
+            </MudItem>
+        </MudGrid>
+    </MudCardHeader>
+    <MudCardContent Class="pa-0">
+        <MudTable Items="@Songs" Elevation="0" Striped="false" Dense="true" Breakpoint=Breakpoint.None>
+            <HeaderContent>
+                <MudTh Style="width: 400px">
+                    <MudText>
+                        @Localizer["Song Title / Artist"]
+                    </MudText>
+                </MudTh>
+                <MudTh>
+                    <MudText>
+                        @Localizer["Difficulty"]
+                    </MudText>
+                </MudTh>
+                <MudTh>
+                    <MudText>
+                        @Localizer["Speed"]
+                    </MudText>
+                </MudTh>
+                <MudTh>
+                    <MudText>
+                        @Localizer["Vanish"]
+                    </MudText>
+                </MudTh>
+                <MudTh>
+                    <MudText>
+                        @Localizer["Inverse"]
+                    </MudText>
+                </MudTh>
+                <MudTh>
+                    <MudText>
+                        @Localizer["Random"]
+                    </MudText>
+                </MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd Style="text-align: initial !important;">
+                    <MudStack Row="true" Justify="Justify.SpaceBetween" AlignItems="AlignItems.Center" Style="padding-left: 20px;">
+                        <div style="margin: 4px;">
+                            <img src="@ScoreUtils.GetDifficultyIcon(context.Difficulty)" alt="@ScoreUtils.GetDifficultyTitle(context.Difficulty)" style="width:25px; height:25px;" />
+                        </div>
+                        <div style="width:400px">
+                            <a href="@($"/Users/{AuthService.GetLoggedInBaid()}/Songs/{context.SongId}")">
+                                <MudText Typo="Typo.body2" Style="font-weight:bold">@GameDataService.GetMusicNameBySongId(MusicDetailDictionary!, context.SongId, SongNameLanguage)</MudText>
+                                <MudText Typo="Typo.caption">@GameDataService.GetMusicArtistBySongId(MusicDetailDictionary!, context.SongId, SongNameLanguage)</MudText>
+                            </a>
+                        </div>
+                    </MudStack>
+                </MudTd>
+                <MudTd>
+                    <MudStack Style="display: inline-flex !important;" Row="true" Spacing="1" AlignItems="AlignItems.Center">
+                        <MudIcon Icon="@Icons.Material.Filled.Star" Size="Size.Small" />
+                        <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                            @GameDataService.GetMusicStarLevel(MusicDetailDictionary!, context.SongId, context.Difficulty)
+                        </MudText>
+                    </MudStack>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @GetSpeedText(context.Speed)
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @GetSwitchText(context.IsVanishOn)
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @GetSwitchText(context.IsInverseOn)
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @GetRandomText(context.RandomType)
+                    </MudText>
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter] public List<ChallengeCompetitionSong>? Songs { get; set; }
+    [Parameter] public Dictionary<uint, MusicDetail>? MusicDetailDictionary { get; set; }
+    [Parameter] public string? SongNameLanguage { get; set; }
+
+
+    private static readonly string[] SpeedStrings =
+    {
+        "1.0", "1.1", "1.2", "1.3", "1.4",
+        "1.5", "1.6", "1.7", "1.8", "1.9",
+        "2.0", "2.5", "3.0", "3.5", "4.0"
+    };
+
+    private string GetSpeedText(uint? speed)
+    {
+        return speed == null ? Localizer["Any"] : SpeedStrings[(int)speed];
+    }
+
+    private string GetSwitchText(bool? sw)
+    {
+        return sw == null ? Localizer["Any"] : (sw == true ? Localizer["On"] : Localizer["Off"]);
+    }
+
+    private string GetRandomText(RandomType? type)
+    {
+        return type == null ? Localizer["Any"] : Localizer[((RandomType)type).ToString()];
+    }
+}

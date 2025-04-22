@@ -5,6 +5,7 @@
 @inject AuthService AuthService;
 @inject HttpClient Client
 @inject NavigationManager NavigationManager
+@inject IGameDataService GameDataService
 
 
 @if (User is not null)
@@ -73,11 +74,26 @@
                         </MudMenuItem>
                         <MudDivider />
                     }
+                    @if (GameDataService.GetEnableChallengeCompe() && ((AuthService.IsLoggedIn && AuthService.IsAdmin) || !AuthService.LoginRequired))
+                    {
+                        <MudNavLink Href="@($"ChallengeCompe/{User?.Baid}/Challenge")" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.People" IconColor="Color.Warning">
+                            <span style="padding-left: 20px;">@Localizer["Challenge"]</span>
+                        </MudNavLink>
+                        <MudDivider />
+                        <MudNavLink Href="@($"ChallengeCompe/{User?.Baid}/Competition")" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.WorkspacePremium" IconColor="Color.Warning">
+                            <span style="padding-left: 20px;">@Localizer["Competition"]</span>
+                        </MudNavLink>
+                        <MudDivider />
+                        <MudNavLink Href="@($"ChallengeCompe/{User?.Baid}/OfficialCompetition")" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.EmojiEvents" IconColor="Color.Warning">
+                            <span style="padding-left: 20px;">@Localizer["Official Competition"]</span>
+                        </MudNavLink>
+                        <MudDivider />
+                    }
                     @if (AuthService.AllowUserDelete)
                     {
                         <MudMenuItem Icon="@Icons.Material.Filled.Delete"
-                                     OnClick="@(_ => DeleteUser(User))"
-                                     OnTouch="@(_ => DeleteUser(User))"
+                                     OnClick="@(_ => DeleteUser(User!))"
+                                     OnTouch="@(_ => DeleteUser(User!))"
                                      IconColor="@Color.Error">
                             @Localizer["Delete User"]
                         </MudMenuItem>

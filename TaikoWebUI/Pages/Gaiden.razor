@@ -7,6 +7,7 @@
 @inject NavigationManager NavigationManager
 @inject ILocalStorageService LocalStorage
 @inject BreadcrumbsStateContainer BreadcrumbsStateContainer
+@inject IDialogService DialogService
 
 @page "/Users/{baid:int}/Gaiden/{danId:int}"
 
@@ -40,7 +41,14 @@ else
                         var danData = danMap[(uint)danId];
 
                         <MudTabPanel Text="@GetDanTitle(danData.Title, SongNameLanguage)" Icon="@GetDanResultIcon((uint)danId)">
-                            <MudText Typo="Typo.h5" Class="mb-4">@Localizer["Details"]</MudText>
+                            <MudStack Row="true" Justify="Justify.FlexStart" AlignItems="AlignItems.Center" Class="mb-4">
+                                <div style="margin: 4px;">
+                                    <MudIconButton Variant="Variant.Filled" OnClick="@(async () => await ShowQrCode((uint)danId, danData.Title))"
+                                                   Icon="@Icons.Material.Filled.QrCode2" Color="@Color.Primary"
+                                                   Size="Size.Medium" Title="Gaiden QRCode" />
+                                </div>
+                                <MudText Typo="Typo.h5">@Localizer["Details"]</MudText>
+                            </MudStack>
                             <MudGrid Class="d-flex">
                                 <MudItem xs="12" sm="12" md="4" Class="pb-1">
                                     <MudCard Outlined="true" Style="height:100%;">
@@ -158,8 +166,16 @@ else
 
                                                         <MudItem xs="9" md="4" Style="display:flex;flex-direction:column;" Class="pl-4">
                                                             <a href="@($"/Users/{Baid}/Songs/{danDataOdaiSong.SongNo}")">
-                                                                <MudText Typo="Typo.body1" Style="font-weight: bold;">@GameDataService.GetMusicNameBySongId(musicDetailDictionary, danDataOdaiSong.SongNo, SongNameLanguage)</MudText>
-                                                                <MudText Typo="Typo.caption">@GameDataService.GetMusicArtistBySongId(musicDetailDictionary, danDataOdaiSong.SongNo, SongNameLanguage)</MudText>
+                                                                @if (!danDataOdaiSong.IsHiddenSongName || (_bestDataMap.ContainsKey((uint)danId) && _bestDataMap[(uint)danId].DanBestStageDataList.Count > index))
+                                                                {
+                                                                    <MudText Typo="Typo.body1" Style="font-weight: bold;">@GameDataService.GetMusicNameBySongId(musicDetailDictionary, danDataOdaiSong.SongNo, SongNameLanguage)</MudText>
+                                                                    <MudText Typo="Typo.caption">@GameDataService.GetMusicArtistBySongId(musicDetailDictionary, danDataOdaiSong.SongNo, SongNameLanguage)</MudText>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <MudText Typo="Typo.body1" Style="font-weight: bold;">???</MudText>
+                                                                    <MudText Typo="Typo.caption">?????</MudText>
+                                                                }
                                                             </a>
                                                         </MudItem>
 

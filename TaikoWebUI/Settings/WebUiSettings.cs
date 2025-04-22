@@ -9,7 +9,7 @@ public class WebUiSettings
     public bool RegisterWithLastPlayTime { get; set; }
     public bool AllowUserDelete { get; set; }
     public bool AllowFreeProfileEditing { get; set; }
-
+    public bool EnableChallengeCompe {  get; set; }
     public bool DisplayUnplayedDans { get; set; }
 
     public MaxWidth MaxWidth { get; set; }

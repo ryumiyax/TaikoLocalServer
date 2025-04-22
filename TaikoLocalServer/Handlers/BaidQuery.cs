@@ -1,4 +1,5 @@
 ﻿using GameDatabase.Context;
+using Microsoft.IdentityModel.Tokens;
 using Throw;
 
 namespace TaikoLocalServer.Handlers;
@@ -21,7 +22,9 @@ public class BaidQueryHandler(
             {
                 Result = 1,
                 IsNewUser = true,
-                Baid = context.Cards.Any() ? context.Cards.AsEnumerable().Max(c => c.Baid) + 1 : 1
+                Baid = context.Cards.Any() ? context.Cards.AsEnumerable().Max(c => c.Baid) + 1 : 1,
+                Title = request.AccessCode,
+                TitlePlateId = 0
             };
         }
 
@@ -108,6 +111,13 @@ public class BaidQueryHandler(
         if (aiRank > 10)
         {
             aiRank = 10;
+        }
+
+        var credential = context.Credentials.Where(e => e.Baid == baid);
+        if (credential == null || credential.All(e => e.Password.IsNullOrEmpty()))
+        {
+            userData.Title = request.AccessCode;
+            userData.TitlePlateId = 0;
         }
 
         return new CommonBaidResponse

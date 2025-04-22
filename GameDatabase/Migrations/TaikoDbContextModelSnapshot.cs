@@ -91,6 +91,223 @@ namespace TaikoLocalServer.Migrations
                     b.ToTable("Card", (string)null);
                 });
 
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteArchievement", b =>
+                {
+                    b.Property<uint>("Baid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("ChallengeCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("ChallengeLose")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("ChallengeWin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("CompeteCopper")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("CompeteCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("CompeteGold")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("CompeteSilver")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("OfficialCompeteCopper")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("OfficialCompeteCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("OfficialCompeteGold")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("OfficialCompeteSilver")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Baid");
+
+                    b.ToTable("ChallengeCompeteArchievementData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteBestDatum", b =>
+                {
+                    b.Property<uint>("BestId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Baid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("ComboCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("CompId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Crown")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Difficulty")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("DrumrollCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("GoodCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("HitCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("MissCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("OkCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("PlayCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Score")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("ScoreRank")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("ScoreRate")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Skipped")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("SongId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("SongIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("BestId");
+
+                    b.HasIndex("Baid");
+
+                    b.HasIndex("CompId", "SongIndex");
+
+                    b.ToTable("ChallengeCompeteBestData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteDatum", b =>
+                {
+                    b.Property<uint>("CompId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Baid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("BeginTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CompeteDescribe")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<uint>("CompeteMode")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CompeteName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<uint>("CompeteTarget")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("ExpireTime")
+                        .HasColumnType("datetime");
+
+                    b.Property<uint>("LastFor")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("MaxParticipant")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("OnlyPlayOnce")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("RequireTitle")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Share")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("State")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CompId");
+
+                    b.ToTable("ChallengeCompeteData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteParticipantDatum", b =>
+                {
+                    b.Property<uint>("CompId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Baid")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CompId", "Baid");
+
+                    b.HasIndex("Baid");
+
+                    b.ToTable("ChallengeCompeteParticipantData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteSongDatum", b =>
+                {
+                    b.Property<uint>("CompId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("SongIndex")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Difficulty")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool?>("IsInverseOn")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool?>("IsVanishOn")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("RandomType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("SongId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint?>("Speed")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("CompId", "SongIndex");
+
+                    b.ToTable("ChallengeCompeteSongData");
+                });
+
             modelBuilder.Entity("GameDatabase.Entities.Credential", b =>
                 {
                     b.Property<uint>("Baid")
@@ -107,6 +324,46 @@ namespace TaikoLocalServer.Migrations
                     b.HasKey("Baid");
 
                     b.ToTable("Credential", (string)null);
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.DanBorder", b =>
+                {
+                    b.Property<uint>("DanId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("BorderIdx")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BorderType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("GoldBorderTotal")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("OdaiType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("RedBorderTotal")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("DanId", "BorderIdx");
+
+                    b.ToTable("DanBorder");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.DanInfo", b =>
+                {
+                    b.Property<uint>("DanId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DanId");
+
+                    b.ToTable("DanInfo");
                 });
 
             modelBuilder.Entity("GameDatabase.Entities.DanScoreDatum", b =>
@@ -139,6 +396,50 @@ namespace TaikoLocalServer.Migrations
                     b.HasKey("Baid", "DanId", "DanType");
 
                     b.ToTable("DanScoreData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.DanSlot", b =>
+                {
+                    b.Property<uint>("DanId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("BindDanId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DanType")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("VerupNo")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("DanId");
+
+                    b.HasIndex("BindDanId");
+
+                    b.ToTable("DanSlot");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.DanSong", b =>
+                {
+                    b.Property<uint>("DanId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("SongIdx")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsHiddenSongName")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("Level")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<uint>("SongNo")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("DanId", "SongIdx");
+
+                    b.ToTable("DanSong");
                 });
 
             modelBuilder.Entity("GameDatabase.Entities.DanStageScoreDatum", b =>
@@ -474,6 +775,55 @@ namespace TaikoLocalServer.Migrations
                     b.Navigation("Ba");
                 });
 
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteBestDatum", b =>
+                {
+                    b.HasOne("GameDatabase.Entities.UserDatum", "UserData")
+                        .WithMany()
+                        .HasForeignKey("Baid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GameDatabase.Entities.ChallengeCompeteSongDatum", "ChallengeCompeteSongData")
+                        .WithMany("BestScores")
+                        .HasForeignKey("CompId", "SongIndex")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChallengeCompeteSongData");
+
+                    b.Navigation("UserData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteParticipantDatum", b =>
+                {
+                    b.HasOne("GameDatabase.Entities.UserDatum", "UserData")
+                        .WithMany()
+                        .HasForeignKey("Baid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GameDatabase.Entities.ChallengeCompeteDatum", "ChallengeCompeteData")
+                        .WithMany("Participants")
+                        .HasForeignKey("CompId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChallengeCompeteData");
+
+                    b.Navigation("UserData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteSongDatum", b =>
+                {
+                    b.HasOne("GameDatabase.Entities.ChallengeCompeteDatum", "ChallengeCompeteData")
+                        .WithMany("Songs")
+                        .HasForeignKey("CompId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChallengeCompeteData");
+                });
+
             modelBuilder.Entity("GameDatabase.Entities.Credential", b =>
                 {
                     b.HasOne("GameDatabase.Entities.UserDatum", "Ba")
@@ -485,6 +835,17 @@ namespace TaikoLocalServer.Migrations
                     b.Navigation("Ba");
                 });
 
+            modelBuilder.Entity("GameDatabase.Entities.DanBorder", b =>
+                {
+                    b.HasOne("GameDatabase.Entities.DanInfo", "DanInfo")
+                        .WithMany("AryOdaiBorder")
+                        .HasForeignKey("DanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DanInfo");
+                });
+
             modelBuilder.Entity("GameDatabase.Entities.DanScoreDatum", b =>
                 {
                     b.HasOne("GameDatabase.Entities.UserDatum", "Ba")
@@ -494,6 +855,28 @@ namespace TaikoLocalServer.Migrations
                         .IsRequired();
 
                     b.Navigation("Ba");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.DanSlot", b =>
+                {
+                    b.HasOne("GameDatabase.Entities.DanInfo", "DanInfo")
+                        .WithMany()
+                        .HasForeignKey("BindDanId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.Navigation("DanInfo");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.DanSong", b =>
+                {
+                    b.HasOne("GameDatabase.Entities.DanInfo", "DanInfo")
+                        .WithMany("AryOdaiSong")
+                        .HasForeignKey("DanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DanInfo");
                 });
 
             modelBuilder.Entity("GameDatabase.Entities.DanStageScoreDatum", b =>
@@ -543,6 +926,25 @@ namespace TaikoLocalServer.Migrations
             modelBuilder.Entity("GameDatabase.Entities.AiScoreDatum", b =>
                 {
                     b.Navigation("AiSectionScoreData");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteDatum", b =>
+                {
+                    b.Navigation("Participants");
+
+                    b.Navigation("Songs");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.ChallengeCompeteSongDatum", b =>
+                {
+                    b.Navigation("BestScores");
+                });
+
+            modelBuilder.Entity("GameDatabase.Entities.DanInfo", b =>
+                {
+                    b.Navigation("AryOdaiBorder");
+
+                    b.Navigation("AryOdaiSong");
                 });
 
             modelBuilder.Entity("GameDatabase.Entities.DanScoreDatum", b =>

@@ -1,0 +1,8 @@
+﻿@using TaikoWebUI.Components;
+@inject HttpClient Client
+@inject AuthService AuthService
+@inject BreadcrumbsStateContainer BreadcrumbsStateContainer
+
+@page "/ChallengeCompe/{baid:int}/Information/{compId:int}"
+
+<ChallengeCompeDetail ChallengeCompetition="@challengeCompetition"/>

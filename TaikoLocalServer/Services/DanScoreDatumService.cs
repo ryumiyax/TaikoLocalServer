@@ -17,4 +17,17 @@ public class DanScoreDatumService : IDanScoreDatumService
             .Include(datum => datum.DanStageScoreData)
             .ToListAsync();
     }
+
+    public async Task ClearDanScores(uint danId, DanType danType)
+    {
+        await context.DanScoreData.Where(datum => datum.DanId == danId && datum.DanType == danType)
+            .Include(datum => datum.DanStageScoreData)
+            .ForEachAsync(datum =>
+            {
+                context.DanStageScoreData.RemoveRange(datum.DanStageScoreData.ToArray());
+                context.DanScoreData.Remove(datum);
+            });
+        await context.SaveChangesAsync();
+        return;
+    }
 }

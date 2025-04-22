@@ -1,0 +1,55 @@
+﻿@using Blazored.LocalStorage
+@using TaikoWebUI.Utilities
+@using TaikoWebUI.Components.ChallengeCompe
+
+@inject AuthService AuthService
+@inject IGameDataService GameDataService
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+
+<MudGrid Class="my-4 pb-10">
+    <MudItem xs="12">
+        <MudPaper Elevation="0" Outlined="true">
+            <MudTabs ActivePanelIndex="0" Rounded="true" Border="true" MinimumTabWidth="100px" PanelClass="pa-8">
+                @if (ChallengeCompetition == null)
+                {
+                    <MudItem xs="12">
+                        <MudText Align="Align.Center" Class="my-8">
+                            @Localizer["No Data"]
+                        </MudText>
+                    </MudItem>
+                }
+                else
+                {
+                    var title = ChallengeCompetition.CompeteMode == CompeteModeType.Chanllenge ? FormatChallengeTitle(Localizer["FullChallengeTitle"]) : ChallengeCompetition.CompeteName;
+                    int count = ChallengeCompetition.Songs.Count;
+                    if (count == 1) count = 0;
+                    for (int i = 0; i <= count; i++)
+                    {
+                        List<ChallengeCompetitionSong> songs = new List<ChallengeCompetitionSong>();
+                        if (i == 0) songs.AddRange(ChallengeCompetition.Songs);
+                        else songs.Add(ChallengeCompetition.Songs[i - 1]);
+
+                        var tabName = i == 0 ? Localizer["Overview"] : GameDataService.GetMusicNameBySongId(musicDetailDictionary, ChallengeCompetition.Songs[i - 1].SongId, SongNameLanguage);
+                        var leaderboard = GetLeaderBoard(i, songs, ChallengeCompetition.Participants);
+                        <MudTabPanel Text="@tabName">
+                            <MudGrid Class="my-4 pb-10">
+                                <MudItem xs="12">
+                                    <MudText Typo="Typo.h5" Class="mb-4">@title</MudText>
+                                    <MudText Typo="Typo.h6" Class="mb-4">@Localizer["State"]: @GetState()</MudText>
+                                    <MudText Typo="Typo.h6" Class="mb-4">@Localizer["Describe"]: @ChallengeCompetition.CompeteDescribe</MudText>
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <ChallengeCompeSongsCard Songs="@songs" MusicDetailDictionary="@musicDetailDictionary" SongNameLanguage="@SongNameLanguage" />
+                                </MudItem>
+                                <MudItem xs="12">
+                                    <ChallengeCompeLeaderboardCard Leaderboard="@leaderboard" />
+                                </MudItem>
+                            </MudGrid>
+                        </MudTabPanel>
+                    }
+                }
+            </MudTabs>
+        </MudPaper>
+    </MudItem>
+</MudGrid>

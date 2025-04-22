@@ -171,6 +171,24 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Accept {
+            get {
+                return ResourceManager.GetString("Accept", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Accepted {
+            get {
+                return ResourceManager.GetString("Accepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Access_Code {
             get {
                 return ResourceManager.GetString("Access Code", resourceCulture);
@@ -333,9 +351,27 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Already_Operated {
+            get {
+                return ResourceManager.GetString("Already Operated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string And {
             get {
                 return ResourceManager.GetString("And", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Any {
+            get {
+                return ResourceManager.GetString("Any", resourceCulture);
             }
         }
         
@@ -396,9 +432,63 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Can_t_Accept_Other_s_Challenge {
+            get {
+                return ResourceManager.GetString("Can\'t Accept Other\'s Challenge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Challenge {
+            get {
+                return ResourceManager.GetString("Challenge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Challenge_Competition_Data {
+            get {
+                return ResourceManager.GetString("Challenge Competition Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Challenge_Expired {
+            get {
+                return ResourceManager.GetString("Challenge Expired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Challenge_Not_Found {
+            get {
+                return ResourceManager.GetString("Challenge Not Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Challenge_Target {
+            get {
+                return ResourceManager.GetString("Challenge Target", resourceCulture);
             }
         }
         
@@ -471,6 +561,60 @@ namespace TaikoWebUI.Localization {
         internal static string Clapping {
             get {
                 return ResourceManager.GetString("Clapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Comp_ID {
+            get {
+                return ResourceManager.GetString("Comp ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Compete_Expired {
+            get {
+                return ResourceManager.GetString("Compete Expired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Compete_is_FullFilled {
+            get {
+                return ResourceManager.GetString("Compete is FullFilled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Compete_Not_Found {
+            get {
+                return ResourceManager.GetString("Compete Not Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Competition {
+            get {
+                return ResourceManager.GetString("Competition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string CompRank {
+            get {
+                return ResourceManager.GetString("CompRank", resourceCulture);
             }
         }
         
@@ -552,6 +696,51 @@ namespace TaikoWebUI.Localization {
         internal static string Course_Songs {
             get {
                 return ResourceManager.GetString("Course Songs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Create_Challenge {
+            get {
+                return ResourceManager.GetString("Create Challenge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Create_Competition {
+            get {
+                return ResourceManager.GetString("Create Competition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Create_Official_Competition {
+            get {
+                return ResourceManager.GetString("Create Official Competition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string CreatorChallengeTitle {
+            get {
+                return ResourceManager.GetString("CreatorChallengeTitle", resourceCulture);
             }
         }
         
@@ -642,6 +831,15 @@ namespace TaikoWebUI.Localization {
         internal static string Delete_User_Success {
             get {
                 return ResourceManager.GetString("Delete User Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Describe {
+            get {
+                return ResourceManager.GetString("Describe", resourceCulture);
             }
         }
         
@@ -801,6 +999,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Expired {
+            get {
+                return ResourceManager.GetString("Expired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Face {
             get {
                 return ResourceManager.GetString("Face", resourceCulture);
@@ -846,6 +1053,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Finished {
+            get {
+                return ResourceManager.GetString("Finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string First_Dan {
             get {
                 return ResourceManager.GetString("First Dan", resourceCulture);
@@ -876,6 +1092,24 @@ namespace TaikoWebUI.Localization {
         internal static string Fourth_Kyuu {
             get {
                 return ResourceManager.GetString("Fourth Kyuu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Fulfilled {
+            get {
+                return ResourceManager.GetString("Fulfilled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string FullChallengeTitle {
+            get {
+                return ResourceManager.GetString("FullChallengeTitle", resourceCulture);
             }
         }
         
@@ -1008,6 +1242,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Information {
+            get {
+                return ResourceManager.GetString("Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Inuneko {
             get {
                 return ResourceManager.GetString("Inuneko", resourceCulture);
@@ -1083,6 +1326,15 @@ namespace TaikoWebUI.Localization {
         internal static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Last_For__Days_ {
+            get {
+                return ResourceManager.GetString("Last For (Days)", resourceCulture);
             }
         }
         
@@ -1188,6 +1440,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Lose {
+            get {
+                return ResourceManager.GetString("Lose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Matsuri {
             get {
                 return ResourceManager.GetString("Matsuri", resourceCulture);
@@ -1200,6 +1461,15 @@ namespace TaikoWebUI.Localization {
         internal static string MAX_Combo {
             get {
                 return ResourceManager.GetString("MAX Combo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Max_Participant {
+            get {
+                return ResourceManager.GetString("Max Participant", resourceCulture);
             }
         }
         
@@ -1227,6 +1497,15 @@ namespace TaikoWebUI.Localization {
         internal static string Messy {
             get {
                 return ResourceManager.GetString("Messy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Miss {
+            get {
+                return ResourceManager.GetString("Miss", resourceCulture);
             }
         }
         
@@ -1341,6 +1620,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Not_Participated {
+            get {
+                return ResourceManager.GetString("Not Participated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Not_Passed {
             get {
                 return ResourceManager.GetString("Not Passed", resourceCulture);
@@ -1353,6 +1641,24 @@ namespace TaikoWebUI.Localization {
         internal static string Notes_Position {
             get {
                 return ResourceManager.GetString("Notes Position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Off {
+            get {
+                return ResourceManager.GetString("Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Official_Competition {
+            get {
+                return ResourceManager.GetString("Official Competition", resourceCulture);
             }
         }
         
@@ -1377,6 +1683,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string On {
+            get {
+                return ResourceManager.GetString("On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Oni {
             get {
                 return ResourceManager.GetString("Oni", resourceCulture);
@@ -1386,9 +1701,54 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Only_Admin_Can_Create_Official_Compete {
+            get {
+                return ResourceManager.GetString("Only Admin Can Create Official Compete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Only_Play_Once {
+            get {
+                return ResourceManager.GetString("Only Play Once", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string other_access_code_s_ {
             get {
                 return ResourceManager.GetString("other access code(s)", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Overview {
+            get {
+                return ResourceManager.GetString("Overview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Participate {
+            get {
+                return ResourceManager.GetString("Participate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Participated {
+            get {
+                return ResourceManager.GetString("Participated", resourceCulture);
             }
         }
         
@@ -1449,6 +1809,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string PlayCount {
+            get {
+                return ResourceManager.GetString("PlayCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Played {
             get {
                 return ResourceManager.GetString("Played", resourceCulture);
@@ -1470,6 +1839,24 @@ namespace TaikoWebUI.Localization {
         internal static string Player_Titles {
             get {
                 return ResourceManager.GetString("Player Titles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Please_Create_More_Challenge_After_Finished_Exists {
+            get {
+                return ResourceManager.GetString("Please Create More Challenge After Finished Exists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Please_Create_More_Compete_After_Finished_Exists {
+            get {
+                return ResourceManager.GetString("Please Create More Compete After Finished Exists", resourceCulture);
             }
         }
         
@@ -1533,6 +1920,15 @@ namespace TaikoWebUI.Localization {
         internal static string Rank {
             get {
                 return ResourceManager.GetString("Rank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string ReceiverChallengeTitle {
+            get {
+                return ResourceManager.GetString("ReceiverChallengeTitle", resourceCulture);
             }
         }
         
@@ -1614,6 +2010,24 @@ namespace TaikoWebUI.Localization {
         internal static string Register_Wrong_Last_Play_Time_Error {
             get {
                 return ResourceManager.GetString("Register Wrong Last Play Time Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Reject {
+            get {
+                return ResourceManager.GetString("Reject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Rejected {
+            get {
+                return ResourceManager.GetString("Rejected", resourceCulture);
             }
         }
         
@@ -1710,6 +2124,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Search_by_Name__Comp_ID {
+            get {
+                return ResourceManager.GetString("Search by Name, Comp ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Search_by_Name__ID__or_Access_Code {
             get {
                 return ResourceManager.GetString("Search by Name, ID, or Access Code", resourceCulture);
@@ -1767,6 +2190,24 @@ namespace TaikoWebUI.Localization {
         internal static string Select_a_Title {
             get {
                 return ResourceManager.GetString("Select a Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Select_Song {
+            get {
+                return ResourceManager.GetString("Select Song", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string Select_User {
+            get {
+                return ResourceManager.GetString("Select User", resourceCulture);
             }
         }
         
@@ -2088,6 +2529,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Unknown {
+            get {
+                return ResourceManager.GetString("Unknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Unknown_Access_Code_Error {
             get {
                 return ResourceManager.GetString("Unknown Access Code Error", resourceCulture);
@@ -2196,6 +2646,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Waiting {
+            get {
+                return ResourceManager.GetString("Waiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Welcome_to_TaikoWebUI_ {
             get {
                 return ResourceManager.GetString("Welcome to TaikoWebUI!", resourceCulture);
@@ -2214,6 +2673,15 @@ namespace TaikoWebUI.Localization {
         /// <summary>
         ///   查找类似  的本地化字符串。
         /// </summary>
+        internal static string Win {
+            get {
+                return ResourceManager.GetString("Win", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
         internal static string Wonderfultaiko {
             get {
                 return ResourceManager.GetString("Wonderfultaiko", resourceCulture);
@@ -2226,6 +2694,15 @@ namespace TaikoWebUI.Localization {
         internal static string Wrap {
             get {
                 return ResourceManager.GetString("Wrap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似  的本地化字符串。
+        /// </summary>
+        internal static string You_already_have_processing_Challenge_with_this_User {
+            get {
+                return ResourceManager.GetString("You already have processing Challenge with this User", resourceCulture);
             }
         }
     }

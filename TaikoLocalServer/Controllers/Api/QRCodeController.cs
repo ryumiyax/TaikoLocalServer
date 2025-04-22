@@ -38,6 +38,37 @@ public class QRCodeController : BaseController<QRCodeController>
         return Content(barcode.ToSVG(), "image/svg+xml");
     }
 
+    [HttpGet("folder/{serial}/{songs}")]
+    public IActionResult GenerateFolderQRCode(string serial, string songs)
+    {
+        string[] songNoes = songs.Split(",");
+
+        byte[] byteArray = System.Text.Encoding.ASCII.GetBytes(serial);
+        byte[] data = new byte[12 + byteArray.Length + songNoes.Length * 2];
+        writeByteArray(data, 0, [
+            0xFF, 0xFF,
+            (byte)(serial.Length & 0xFF),
+            0x01, 0x00
+        ]);
+        writeByteArray(data, 5, byteArray);
+        writeByteArray(data, 5 + byteArray.Length, [0xFF, 0xFF, (byte)(songNoes.Length & 0xFF), 0x05, 0x00]);
+        for (int i = 0; i < songNoes.Length; i++)
+        {
+            var songNo = int.Parse(songNoes[i]);
+            writeByteArray(data, 10 + byteArray.Length + i * 2, [(byte)(songNo & 0xFF), (byte)((songNo >> 8) & 0xFF)]);
+        }
+        writeByteArray(data, 10 + byteArray.Length + songNoes.Length * 2, [0xEE, 0xFF]);
+
+        data = encode(data, key, iv);
+        byte[] finalData = new byte[5 + data.Length];
+        writeString(finalData, 0, "S12");
+        writeByteArray(finalData, 3, [0x00, 0x01]);
+        writeByteArray(finalData, 5, data);
+
+        var barcode = new Barcode(finalData, BarcodeFormats.QRCode);
+        return Content(barcode.ToSVG(), "image/svg+xml");
+    }
+
     private byte[] key = { 0xB2, 0x4F, 0x9B, 0x16, 0xFF, 0xB5, 0xB1, 0x32, 0x2C, 0x4B, 0x06, 0x80, 0x8B, 0xE1, 0xF2, 0x6A };
     private byte[] iv = { 0x7F, 0xC8, 0xD8, 0xE2, 0x00, 0x1E, 0x1C, 0x88, 0xEE, 0x5C, 0xD9, 0x48, 0xE2, 0x9F, 0x65, 0xFD };
     private void writeString(byte[] data, int begin, string toWrite)

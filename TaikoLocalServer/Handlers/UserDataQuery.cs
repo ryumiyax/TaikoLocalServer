@@ -1,6 +1,7 @@
 ﻿using System.Buffers.Binary;
 using GameDatabase.Context;
 using Microsoft.Extensions.Options;
+using TaikoLocalServer.Services;
 using TaikoLocalServer.Settings;
 using Throw;
 
@@ -8,7 +9,7 @@ namespace TaikoLocalServer.Handlers;
 
 public record UserDataQuery(uint Baid) : IRequest<CommonUserDataResponse>;
 
-public class UserDataQueryHandler(TaikoDbContext context, IGameDataService gameDataService, ILogger<UserDataQueryHandler> logger, IOptions<ServerSettings> settings) 
+public class UserDataQueryHandler(TaikoDbContext context, IGameDataService gameDataService, IChallengeCompeteService challengeCompeteService, ILogger<UserDataQueryHandler> logger, IOptions<ServerSettings> settings) 
     : IRequestHandler<UserDataQuery, CommonUserDataResponse>
 {
 
@@ -79,7 +80,26 @@ public class UserDataQueryHandler(TaikoDbContext context, IGameDataService gameD
                 difficultySettingArray[i] -= 1;
             }
         }
-        
+
+        bool hasChallengeCompe = await challengeCompeteService.HasChallengeCompete(request.Baid);
+        List<uint> mergedFavoriteSongs = new List<uint>();
+        if (hasChallengeCompe)
+        {
+            var challengeCompeteSongIds = await challengeCompeteService.GetChallengeSongIds(request.Baid);
+            mergedFavoriteSongs.AddRange(challengeCompeteSongIds);
+            userData.FavoriteSongsArray.ForEach(songId =>
+            {
+                if (!mergedFavoriteSongs.Contains(songId))
+                {
+                    mergedFavoriteSongs.Add(songId);
+                }
+            });
+        } 
+        else
+        {
+            mergedFavoriteSongs.AddRange(userData.FavoriteSongsArray);
+        }
+
         var response = new CommonUserDataResponse
         {
             Result = 1,
@@ -87,7 +107,7 @@ public class UserDataQueryHandler(TaikoDbContext context, IGameDataService gameD
             TitleFlg = titleArray,
             ReleaseSongFlg = releaseSongArray,
             UraReleaseSongFlg = uraSongArray,
-            AryFavoriteSongNoes = userData.FavoriteSongsArray.ToArray(),
+            AryFavoriteSongNoes = mergedFavoriteSongs.ToArray(),
             AryRecentSongNoes = recentSongs,
             DefaultOptionSetting = defaultOptions,
             NotesPosition = userData.NotesPosition,
@@ -100,7 +120,7 @@ public class UserDataQueryHandler(TaikoDbContext context, IGameDataService gameD
             DifficultyPlayedStar = userData.DifficultyPlayedStar,
             DifficultyPlayedSort = userData.DifficultyPlayedSort,
             SongRecentCnt = (uint)recentSongs.Length,
-            IsChallengecompe = false,
+            IsChallengecompe = hasChallengeCompe,
             // TODO: Other fields
         };
 

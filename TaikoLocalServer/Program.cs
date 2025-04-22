@@ -53,6 +53,7 @@ try
     builder.Configuration.AddJsonFile($"{configurationsDirectory}/Logging.json", optional: false, reloadOnChange: false);
     builder.Configuration.AddJsonFile($"{configurationsDirectory}/Database.json", optional: false, reloadOnChange: false);
     builder.Configuration.AddJsonFile($"{configurationsDirectory}/ServerSettings.json", optional: false, reloadOnChange: false);
+    builder.Configuration.AddJsonFile($"{configurationsDirectory}/CompeteSettings.json", optional: false, reloadOnChange: false);
     builder.Configuration.AddJsonFile($"{configurationsDirectory}/DataSettings.json", optional: true, reloadOnChange: false);
     builder.Configuration.AddJsonFile($"{configurationsDirectory}/AuthSettings.json", optional: true, reloadOnChange: false);
 
@@ -72,7 +73,7 @@ try
 
     if (builder.Configuration.GetValue<bool>("ServerSettings:EnableMoreSongs"))
     {
-        Log.Warning("Song limit expanded! Use at your own risk!");
+        Log.Warning("Song limit expanded to {MoreSongsSize}! Use at your own risk!", builder.Configuration.GetValue<int>("ServerSettings:MoreSongsSize"));
     }
 
     // Add response compression services
@@ -94,6 +95,7 @@ try
     builder.Services.AddSingleton<IGameDataService, GameDataService>();
     builder.Services.AddScoped<ISongLeaderboardService, SongLeaderboardService>();
     builder.Services.Configure<ServerSettings>(builder.Configuration.GetSection(nameof(ServerSettings)));
+    builder.Services.Configure<CompeteSettings>(builder.Configuration.GetSection(nameof(CompeteSettings)));
     builder.Services.Configure<DataSettings>(builder.Configuration.GetSection(nameof(DataSettings)));
     builder.Services.Configure<AuthSettings>(builder.Configuration.GetSection(nameof(AuthSettings)));
 
@@ -143,6 +145,7 @@ try
         });
     });
     builder.Services.AddTaikoDbServices();
+    builder.Services.AddQuartzJobs();
     builder.Services.AddSingleton<SongBestResponseMapper>();
 
     var app = builder.Build();

@@ -1,4 +1,5 @@
 ﻿using GameDatabase.Context;
+using SharedProject.Models;
 using Throw;
 
 namespace TaikoLocalServer.Services;
@@ -9,7 +10,47 @@ public class UserDatumService(TaikoDbContext context) : IUserDatumService
     {
         return await context.UserData.Include(d => d.Tokens).ToListAsync();
     }
-    
+    public async Task<Dictionary<uint, User>> GetAllUserDict()
+    {
+        List<UserDatum> listUser = await GetAllUserDatum();
+        Dictionary<uint, User> dict = new Dictionary<uint, User>();
+        foreach (var user in listUser)
+        {
+            dict.Add(user.Baid, new()
+            {
+                Baid = user.Baid,
+                IsAdmin = false,
+                UserSetting = new()
+                {
+                    Baid = user.Baid,
+                    ToneId = 0,
+                    IsDisplayAchievement = true,
+                    IsDisplayDanOnNamePlate = true,
+                    DifficultySettingCourse = 0,
+                    DifficultySettingStar = 0,
+                    DifficultySettingSort = 0,
+                    IsVoiceOn = false,
+                    IsSkipOn = false,
+                    AchievementDisplayDifficulty = Difficulty.None,
+                    MyDonName = user.MyDonName,
+                    MyDonNameLanguage = user.MyDonNameLanguage,
+                    Title = user.Title,
+                    TitlePlateId = user.TitlePlateId,
+                    Kigurumi = user.CurrentKigurumi,
+                    Head = user.CurrentHead,
+                    Body = user.CurrentBody,
+                    Face = user.CurrentFace,
+                    Puchi = user.CurrentPuchi,
+                    FaceColor = user.ColorFace,
+                    BodyColor = user.ColorFace,
+                    LimbColor = user.ColorLimb
+                }
+            });
+        }
+        return dict;
+    }
+
+
     public async Task<UserDatum?> GetFirstUserDatumOrNull(uint baid)
     {
         return await context.UserData

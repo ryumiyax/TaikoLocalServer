@@ -286,7 +286,7 @@
     <value>游玩歷史</value>
   </data>
   <data name="No Play History Found" xml:space="preserve">
-    <value>没有游玩歷史</value>
+    <value>沒有游玩歷史</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>密碼</value>
@@ -839,5 +839,173 @@
   </data>
   <data name="Search by Gaiden Title" xml:space="preserve">
     <value>外傳標題搜索</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>接受</value>
+  </data>
+  <data name="Accepted" xml:space="preserve">
+    <value>已接受</value>
+  </data>
+  <data name="Challenge" xml:space="preserve">
+    <value>挑戰書</value>
+  </data>
+  <data name="Challenge Competition Data" xml:space="preserve">
+    <value>挑戰與大赛</value>
+  </data>
+  <data name="Challenge Target" xml:space="preserve">
+    <value>挑戰對象</value>
+  </data>
+  <data name="Comp ID" xml:space="preserve">
+    <value>比赛ID</value>
+  </data>
+  <data name="Competition" xml:space="preserve">
+    <value>大賽</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>創建</value>
+  </data>
+  <data name="Create Challenge" xml:space="preserve">
+    <value>發起挑戰</value>
+  </data>
+  <data name="Create Competition" xml:space="preserve">
+    <value>創建大賽</value>
+  </data>
+  <data name="Create Official Competition" xml:space="preserve">
+    <value>創建官方大賽</value>
+  </data>
+  <data name="CreatorChallengeTitle" xml:space="preserve">
+    <value>向 {To} 發起的挑戰書</value>
+  </data>
+  <data name="Describe" xml:space="preserve">
+    <value>簡介</value>
+  </data>
+  <data name="FullChallengeTitle" xml:space="preserve">
+    <value>{From} 向 {To} 發起的挑戰書</value>
+  </data>
+  <data name="Last For (Days)" xml:space="preserve">
+    <value>持續時間（天）</value>
+  </data>
+  <data name="Max Participant" xml:space="preserve">
+    <value>最大參與人數</value>
+  </data>
+  <data name="Official Competition" xml:space="preserve">
+    <value>官方大赛</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>開啟</value>
+  </data>
+  <data name="Only Play Once" xml:space="preserve">
+    <value>單次挑戰</value>
+  </data>
+  <data name="Participate" xml:space="preserve">
+    <value>參加</value>
+  </data>
+  <data name="Participated" xml:space="preserve">
+    <value>已參加</value>
+  </data>
+  <data name="ReceiverChallengeTitle" xml:space="preserve">
+    <value>來自 {From} 的挑戰書</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>拒絕</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>已拒絕</value>
+  </data>
+  <data name="Search by Name, Comp ID" xml:space="preserve">
+    <value>按名稱，比赛ID搜索</value>
+  </data>
+  <data name="Select Song" xml:space="preserve">
+    <value>請選擇歌曲與難度</value>
+  </data>
+  <data name="Select User" xml:space="preserve">
+    <value>請選擇挑戰的對象</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>詳情</value>
+  </data>
+  <data name="Finished" xml:space="preserve">
+    <value>已結束</value>
+  </data>
+  <data name="Fulfilled" xml:space="preserve">
+    <value>已滿員</value>
+  </data>
+  <data name="Waiting" xml:space="preserve">
+    <value>等待中</value>
+  </data>
+  <data name="Expired" xml:space="preserve">
+    <value>已過期</value>
+  </data>
+  <data name="Any" xml:space="preserve">
+    <value>任意</value>
+  </data>
+  <data name="Not Participated" xml:space="preserve">
+    <value>未參加</value>
+  </data>
+  <data name="Already Operated" xml:space="preserve">
+    <value>已經操作過了</value>
+  </data>
+  <data name="Compete is FullFilled" xml:space="preserve">
+    <value>大賽已經滿員了</value>
+  </data>
+  <data name="Compete Expired" xml:space="preserve">
+    <value>大賽已經結束了</value>
+  </data>
+  <data name="Compete Not Found" xml:space="preserve">
+    <value>找不到該大賽</value>
+  </data>
+  <data name="Can't Accept Other's Challenge" xml:space="preserve">
+    <value>無法操作其他人的挑戰</value>
+  </data>
+  <data name="Challenge Expired" xml:space="preserve">
+    <value>挑戰已經過期了</value>
+  </data>
+  <data name="Challenge Not Found" xml:space="preserve">
+    <value>找不到該挑戰</value>
+  </data>
+  <data name="Only Admin Can Create Official Compete" xml:space="preserve">
+    <value>只有管理員才能創建官方大賽</value>
+  </data>
+  <data name="Please Create More Compete After Finished Exists" xml:space="preserve">
+    <value>請完成當前創建的大賽后再創建新的大賽</value>
+  </data>
+  <data name="Please Create More Challenge After Finished Exists" xml:space="preserve">
+    <value>請完成當前創建的挑戰後再創建新的挑戰</value>
+  </data>
+  <data name="You already have processing Challenge with this User" xml:space="preserve">
+    <value>您已經有與選擇的用戶正在進行中的挑戰了</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>未知</value>
+  </data>
+  <data name="Miss" xml:space="preserve">
+    <value>不可</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>總覽</value>
+  </data>
+  <data name="PlayCount" xml:space="preserve">
+    <value>遊玩次數</value>
+  </data>
+  <data name="CompRank" xml:space="preserve">
+    <value>第{rank}名</value>
+  </data>
+  <data name="Win" xml:space="preserve">
+    <value>勝利</value>
+  </data>
+  <data name="Lose" xml:space="preserve">
+    <value>失敗</value>
+  </data>
+  <data name="No Score Commited" xml:space="preserve">
+    <value>未提交成績</value>
+  </data>
+  <data name="In progress" xml:space="preserve">
+    <value>進行中</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>狀態</value>
   </data>
 </root>

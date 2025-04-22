@@ -1,0 +1,139 @@
+﻿@using Blazored.LocalStorage
+@using TaikoWebUI.Utilities
+
+@inject AuthService AuthService
+@inject IGameDataService GameDataService
+@inject ILocalStorageService LocalStorage
+@inject NavigationManager NavigationManager
+
+<MudCard Outlined="true" Elevation="0">
+    <MudCardHeader>
+        <MudGrid Spacing="2">
+            <MudItem xs="12">
+                <MudText Typo="Typo.h6">@Localizer["Leaderboard"]</MudText>
+            </MudItem>
+        </MudGrid>
+    </MudCardHeader>
+    <MudCardContent Class="pa-0">
+        <MudTable Items="@Leaderboard" Elevation="0" Striped="false" Dense="true" Breakpoint=Breakpoint.None>
+            <HeaderContent>
+                <MudTh>@Localizer["Rank"]</MudTh>
+                <MudTh>@Localizer["Player"]</MudTh>
+                <MudTh>@Localizer["Score"]</MudTh>
+                <MudTh>@Localizer["PlayCount"]</MudTh>
+                <MudTh>@Localizer["Good"]</MudTh>
+                <MudTh>@Localizer["OK"]</MudTh>
+                <MudTh>@Localizer["Miss"]</MudTh>
+                <MudTh>@Localizer["Drumroll"]</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>
+                    @{
+                        int realRank = getRealRank(context.Baid);
+                        string icon = getIcons();
+                        if (realRank >= 0)
+                        {
+                            if (realRank == 0)
+                            {
+                                <MudIcon Icon="@icon" Color="@Color.Warning" Size="Size.Small" />
+                            }
+                            else if (realRank == 1)
+                            {
+                                <MudIcon Icon="@icon" Color="@Color.Info" Size="Size.Small" />
+                            }
+                            else if (realRank == 2)
+                            {
+                                <MudIcon Icon="@icon" Color="@Color.Secondary" Size="Size.Small" />
+                            }
+                            else
+                            {
+                                <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                                    @realRank
+                                </MudText>
+                            }
+                        } 
+                    }
+                </MudTd>
+                <MudTd Style="text-align: initial !important;">
+                    @if (AuthService.IsAdmin)
+                    {
+                        <MudStack Row="true" Class="pointer" AlignItems="AlignItems.Baseline" Style="padding-left: 20px;" onclick="@(async () => await UserChanged(context))">
+                            <MudText Typo="Typo.body1">@context.UserAppearance?.MyDonName</MudText>
+                            <MudText Typo="Typo.caption" Style="color: #9E9E9E">(@Localizer["ID"]: @context.Baid)</MudText>
+                        </MudStack>
+                    }
+                    else
+                    {
+                        <MudStack Row="true" AlignItems="AlignItems.Baseline" Style="padding-left: 20px;">
+                            <MudText Typo="Typo.body1">@context.UserAppearance?.MyDonName</MudText>
+                            <MudText Typo="Typo.caption" Style="color: #9E9E9E">(@Localizer["ID"]: @context.Baid)</MudText>
+                        </MudStack>
+                    }
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @context.Score
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @context.PlayCount
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @context.GoodCount
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @context.OkCount
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @context.MissCount
+                    </MudText>
+                </MudTd>
+                <MudTd>
+                    <MudText Typo="Typo.caption" Style="line-height:1;margin-top:2px;margin-right:2px;">
+                        @context.DrumrollCount
+                    </MudText>
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter] public CompeteModeType? Mode { get; set; }
+    [Parameter] public List<ChallengeCompetitionBestScore>? Leaderboard { get; set; }
+
+    private Task UserChanged(ChallengeCompetitionBestScore leaderboard)
+    {
+        NavigationManager.NavigateTo($"/Users/{leaderboard.Baid}/Songs/{leaderboard.SongId}", forceLoad: true);
+        return Task.CompletedTask;
+    }
+
+    private int getRealRank(uint baid)
+    {
+        if (Leaderboard != null)
+        {
+            var score = Leaderboard.Find(e => e.Baid == baid);
+            if (score != null && score.Score != 0)
+            {
+                return Leaderboard.FindIndex(e => e.Score == score.Score);
+            }
+        }
+
+        return -1;
+    }
+
+    private string getIcons()
+    {
+        if (Mode == CompeteModeType.Chanllenge) return Icons.Material.Filled.Stars;
+        else if (Mode == CompeteModeType.Compete) return Icons.Material.Filled.WorkspacePremium;
+        else if (Mode == CompeteModeType.OfficialCompete) return Icons.Material.Filled.EmojiEvents;
+        return "";
+    }
+}
